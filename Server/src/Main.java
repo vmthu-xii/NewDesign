@@ -28,6 +28,7 @@ public class Main {
 				else if(msg.equals("STOP_APP") || msg.equals("STOP_PROCESS")) Stop();
 				else if(msg.equals("LIST_APP")) List("APP");
 				else if(msg.equals("LIST_PROCESS")) List("PROCESS");
+				else if(msg.equals("DISCONNECT")) isRunning = false;
 				else isRunning = false;
 				
 			} catch(Exception e1) {
