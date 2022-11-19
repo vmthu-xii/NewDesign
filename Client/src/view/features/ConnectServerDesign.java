@@ -7,7 +7,8 @@ import controller.*;
 
 public class ConnectServerDesign extends javax.swing.JPanel {
 
-    public ConnectServerDesign() {
+	private static final long serialVersionUID = 1L;
+	public ConnectServerDesign() {
         initComponents();
         setOpaque(false);
     }
