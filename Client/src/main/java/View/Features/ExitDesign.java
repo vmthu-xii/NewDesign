@@ -1,4 +1,4 @@
-package View.Features;
+package view.features;
 
 public class ExitDesign extends javax.swing.JPanel {
 
@@ -11,7 +11,7 @@ public class ExitDesign extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        panelBorder1 = new View.PanelBorder();
+        panelBorder1 = new view.components.PanelBorder();
         btnNo = new javax.swing.JButton();
         btnYes = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -122,6 +122,6 @@ public class ExitDesign extends javax.swing.JPanel {
     private javax.swing.JButton btnYes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private View.PanelBorder panelBorder1;
+    private view.components.PanelBorder panelBorder1;
     // End of variables declaration//GEN-END:variables
 }

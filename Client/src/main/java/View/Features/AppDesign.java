@@ -1,7 +1,11 @@
-package View.Features;
+package view.features;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
+
 import javax.swing.table.DefaultTableCellRenderer;
+
+import controller.AppListener;
 
 public class AppDesign extends javax.swing.JPanel {
 
@@ -12,38 +16,35 @@ public class AppDesign extends javax.swing.JPanel {
         spTable.getVerticalScrollBar().setPreferredSize(new Dimension(10, 0));
         spTable.getHorizontalScrollBar().setPreferredSize(new Dimension(0, 10));
         
-        
         DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tableApp.getTableHeader().getDefaultRenderer();
         renderer.setHorizontalAlignment(0);
-        
-        String name = "vmthu";
-        String ID = "np";
-        String list[] = {name, ID};
-	tableApp.addRow(list);tableApp.addRow(list);tableApp.addRow(list);tableApp.addRow(list);tableApp.addRow(list);tableApp.addRow(list);
-    }
+            }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+		ActionListener act = new AppListener(this);
+
         jPanel1 = new javax.swing.JPanel();
-        panelBorder2 = new View.PanelBorder();
+        panelBorder2 = new view.components.PanelBorder();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtIDApp = new javax.swing.JTextField();
         btnStopApp = new javax.swing.JButton();
-        panelBorder1 = new View.PanelBorder();
+        panelBorder1 = new view.components.PanelBorder();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtNameApp = new javax.swing.JTextField();
         btnStartApp = new javax.swing.JButton();
-        panelBorder3 = new View.PanelBorder();
+        panelBorder3 = new view.components.PanelBorder();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         btnListApp = new javax.swing.JButton();
         spTable = new javax.swing.JScrollPane();
-        tableApp = new View.Table();
+        tableApp = new view.components.Table();
 
+        
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(255, 255, 255));
         setOpaque(false);
@@ -66,6 +67,7 @@ public class AppDesign extends javax.swing.JPanel {
         txtIDApp.setPreferredSize(new java.awt.Dimension(64, 25));
 
         btnStopApp.setText("STOP");
+		btnStopApp.addActionListener(act);
         btnStopApp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnStopApp.setPreferredSize(new java.awt.Dimension(70, 30));
 
@@ -117,6 +119,7 @@ public class AppDesign extends javax.swing.JPanel {
         txtNameApp.setPreferredSize(new java.awt.Dimension(64, 25));
 
         btnStartApp.setText("START");
+		btnStartApp.addActionListener(act);
         btnStartApp.setBorderPainted(false);
         btnStartApp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnStartApp.setPreferredSize(new java.awt.Dimension(70, 30));
@@ -165,6 +168,7 @@ public class AppDesign extends javax.swing.JPanel {
         jLabel6.setText("Click LIST to show all running applications on server");
 
         btnListApp.setText("LIST");
+		btnListApp.addActionListener(act);
         btnListApp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnListApp.setPreferredSize(new java.awt.Dimension(70, 30));
 
@@ -176,7 +180,7 @@ public class AppDesign extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Name Application", "ID Application"
+                "Name Application", "ID Application", "Count threads"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -276,12 +280,12 @@ public class AppDesign extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private View.PanelBorder panelBorder1;
-    private View.PanelBorder panelBorder2;
-    private View.PanelBorder panelBorder3;
+    private view.components.PanelBorder panelBorder1;
+    private view.components.PanelBorder panelBorder2;
+    private view.components.PanelBorder panelBorder3;
     private javax.swing.JScrollPane spTable;
-    private View.Table tableApp;
-    private javax.swing.JTextField txtIDApp;
-    private javax.swing.JTextField txtNameApp;
+    public view.components.Table tableApp;
+    public javax.swing.JTextField txtIDApp;
+    public javax.swing.JTextField txtNameApp;
     // End of variables declaration//GEN-END:variables
 }

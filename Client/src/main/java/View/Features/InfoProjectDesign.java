@@ -1,4 +1,4 @@
-package View.Features;
+package view.features;
 
 public class InfoProjectDesign extends javax.swing.JPanel {
 
@@ -10,12 +10,12 @@ public class InfoProjectDesign extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelBorder2 = new View.PanelBorder();
+        panelBorder2 = new view.components.PanelBorder();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        panelBorder4 = new View.PanelBorder();
+        panelBorder4 = new view.components.PanelBorder();
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -28,7 +28,7 @@ public class InfoProjectDesign extends javax.swing.JPanel {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        panelBorder1 = new View.PanelBorder();
+        panelBorder1 = new view.components.PanelBorder();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -292,8 +292,8 @@ public class InfoProjectDesign extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private View.PanelBorder panelBorder1;
-    private View.PanelBorder panelBorder2;
-    private View.PanelBorder panelBorder4;
+    private view.components.PanelBorder panelBorder1;
+    private view.components.PanelBorder panelBorder2;
+    private view.components.PanelBorder panelBorder4;
     // End of variables declaration//GEN-END:variables
 }

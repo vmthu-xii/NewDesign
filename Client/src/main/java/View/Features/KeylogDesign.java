@@ -1,4 +1,4 @@
-package View.Features;
+package view.features;
 
 import java.awt.*;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -14,7 +14,7 @@ public class KeylogDesign extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        panelBorder1 = new View.PanelBorder();
+        panelBorder1 = new view.components.PanelBorder();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -160,7 +160,7 @@ public class KeylogDesign extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private View.PanelBorder panelBorder1;
+    private view.components.PanelBorder panelBorder1;
     private javax.swing.JTextArea txtKeylog;
     // End of variables declaration//GEN-END:variables
 }

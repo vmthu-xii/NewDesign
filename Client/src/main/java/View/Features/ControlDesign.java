@@ -1,4 +1,4 @@
-package View.Features;
+package view.features;
 
 import java.awt.*;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -13,11 +13,11 @@ public class ControlDesign extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        panelBorder2 = new View.PanelBorder();
+        panelBorder2 = new view.components.PanelBorder();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnRestart = new javax.swing.JButton();
-        panelBorder1 = new View.PanelBorder();
+        panelBorder1 = new view.components.PanelBorder();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btnShutdown = new javax.swing.JButton();
@@ -161,7 +161,7 @@ public class ControlDesign extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private View.PanelBorder panelBorder1;
-    private View.PanelBorder panelBorder2;
+    private view.components.PanelBorder panelBorder1;
+    private view.components.PanelBorder panelBorder2;
     // End of variables declaration//GEN-END:variables
 }
