@@ -1,7 +1,12 @@
 package view.features;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
+
 import javax.swing.table.DefaultTableCellRenderer;
+
+import controller.ConnectListener;
+import controller.ControlListener;
 
 public class ControlDesign extends javax.swing.JPanel {
 
@@ -39,7 +44,10 @@ public class ControlDesign extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jLabel4.setText("Warning: It will restart and disconnect to server");
 
+        
+        ActionListener act = new ControlListener(this);
         btnRestart.setText("RESTART");
+        btnRestart.addActionListener(act);
         btnRestart.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnRestart.setPreferredSize(new java.awt.Dimension(70, 30));
 
@@ -84,6 +92,7 @@ public class ControlDesign extends javax.swing.JPanel {
         jLabel3.setText("Warning: It will shutdown and disconnect to server");
 
         btnShutdown.setText("SHUTDOWN");
+        btnShutdown.addActionListener(act);
         btnShutdown.setBorderPainted(false);
         btnShutdown.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnShutdown.setPreferredSize(new java.awt.Dimension(70, 30));

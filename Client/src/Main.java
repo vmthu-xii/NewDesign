@@ -2,7 +2,6 @@ import view.features.*;
 import java.awt.*;
 import javax.swing.*;
 import view.components.*;
-
 public class Main extends javax.swing.JFrame {
 
     private InfoProjectDesign info;
@@ -159,11 +158,11 @@ public class Main extends javax.swing.JFrame {
         }
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Main().setVisible(true);
-            }
-        });
+        SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				new Main().setVisible(true);
+			}
+		});
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

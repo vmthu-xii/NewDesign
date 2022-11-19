@@ -1,9 +1,12 @@
 package view.features;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableCellRenderer;
+
+import controller.KeylogListener;
 
 public class KeylogDesign extends javax.swing.JPanel {
 
@@ -34,6 +37,10 @@ public class KeylogDesign extends javax.swing.JPanel {
         setForeground(new java.awt.Color(255, 255, 255));
         setOpaque(false);
 
+        
+        ActionListener act = new KeylogListener(this);
+        
+        
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         panelBorder1.setBackground(new java.awt.Color(212, 214, 245));
@@ -49,10 +56,12 @@ public class KeylogDesign extends javax.swing.JPanel {
         jLabel3.setText("Click UNHOOK...");
 
         btnUnhook.setText("UNHOOK");
+        btnUnhook.addActionListener(act);
         btnUnhook.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnUnhook.setPreferredSize(new java.awt.Dimension(80, 23));
 
         btnHook.setText("HOOK");
+        btnHook.addActionListener(act);
         btnHook.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
@@ -62,10 +71,12 @@ public class KeylogDesign extends javax.swing.JPanel {
         jLabel5.setText("Click SHOW TEXT");
 
         btnShowText.setText("SHOW TEXT");
+        btnShowText.addActionListener(act);
         btnShowText.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnShowText.setPreferredSize(new java.awt.Dimension(80, 23));
 
         btnClearText.setText("CLEAR TEXT");
+        btnClearText.addActionListener(act);
         btnClearText.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnClearText.setPreferredSize(new java.awt.Dimension(80, 23));
 

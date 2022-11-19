@@ -53,6 +53,9 @@ public class ConnectListener implements ActionListener{
 				Client.out.write("DISCONNECT");
 				Client.out.newLine();
 				Client.out.flush();
+				
+				Client.client.close();
+				Client.client = null;
 				connectDesign.btnConnect.setText("Connect");
 			} catch (IOException e1) {
 				e1.printStackTrace();
