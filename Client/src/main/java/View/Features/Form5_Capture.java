@@ -1,6 +1,8 @@
 package view.features;
 
 import java.awt.*;
+
+import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableCellRenderer;
 
 public class Form5_Capture extends javax.swing.JPanel {
@@ -19,10 +21,11 @@ public class Form5_Capture extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btnSave = new javax.swing.JButton();
-        btnCapture = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        btnCapture = new javax.swing.JButton();        
         txtCapture = new javax.swing.JTextArea();
-
+        jScrollPane1 = new javax.swing.JScrollPane(txtCapture, 
+        		JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+        		JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(255, 255, 255));
         setOpaque(false);
@@ -51,8 +54,13 @@ public class Form5_Capture extends javax.swing.JPanel {
 
         txtCapture.setColumns(20);
         txtCapture.setRows(5);
+        txtCapture.setEditable(false);
+        txtCapture.setLineWrap(true);
+        
         jScrollPane1.setViewportView(txtCapture);
-
+//        jScrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+//        jScrollPane1.setVerticalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        
         javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);
         panelBorder1.setLayout(panelBorder1Layout);
         panelBorder1Layout.setHorizontalGroup(

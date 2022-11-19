@@ -1,6 +1,8 @@
 package view.features;
 
 import java.awt.*;
+
+import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableCellRenderer;
 
 public class KeylogDesign extends javax.swing.JPanel {
@@ -24,9 +26,10 @@ public class KeylogDesign extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         btnShowText = new javax.swing.JButton();
         btnClearText = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
         txtKeylog = new javax.swing.JTextArea();
-
+        jScrollPane1 = new javax.swing.JScrollPane(txtKeylog, 
+        		JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+        		JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(255, 255, 255));
         setOpaque(false);
@@ -68,8 +71,13 @@ public class KeylogDesign extends javax.swing.JPanel {
 
         txtKeylog.setColumns(20);
         txtKeylog.setRows(5);
+        txtKeylog.setEditable(false);
+        txtKeylog.setLineWrap(true);
+       
         jScrollPane1.setViewportView(txtKeylog);
-
+//        jScrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+//        jScrollPane1.setVerticalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+       
         javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);
         panelBorder1.setLayout(panelBorder1Layout);
         panelBorder1Layout.setHorizontalGroup(
@@ -161,6 +169,6 @@ public class KeylogDesign extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private view.components.PanelBorder panelBorder1;
-    private javax.swing.JTextArea txtKeylog;
+    public javax.swing.JTextArea txtKeylog;
     // End of variables declaration//GEN-END:variables
 }

@@ -60,7 +60,7 @@ public class ProcessDesign extends javax.swing.JPanel {
         jLabel2.setText("Stop a process");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jLabel4.setText("Enter an application ID and click STOP to stop it on server");
+        jLabel4.setText("Enter an application ID (name) and click STOP to stop it (all) on server");
 
         txtIDProcess.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(222, 222, 222)));
         txtIDProcess.setMinimumSize(new java.awt.Dimension(64, 25));

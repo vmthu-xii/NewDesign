@@ -30,6 +30,7 @@ public class ProcessListener implements ActionListener{
 		String count = null;
 
 		this.ClearListener();
+		
 		while(true) {
 			name = Client.in.readLine();
 			if(name.equals("Done")) break;
@@ -95,8 +96,13 @@ public class ProcessListener implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		if(Client.client == null) {
+			JOptionPane.showMessageDialog(null, "Not connected to the server");
+			return;
+		}
+		
 		String click = e.getActionCommand();
-		//System.out.println(click);
+		
 		if(click.equals("LIST"))
 			try {
 				this.List();

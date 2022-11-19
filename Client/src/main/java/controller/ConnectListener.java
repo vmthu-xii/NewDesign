@@ -23,6 +23,11 @@ public class ConnectListener implements ActionListener{
 		
 		try {
 			Client.client = new Socket(ConnectServerDesign.txtIP.getText(), port);
+			JOptionPane.showMessageDialog(null, "Connected successfully!");
+			connectDesign.btnConnect.setText("Disconnect");
+            // Create input and output streams to read from and write to the server
+            Client.in = new BufferedReader(new InputStreamReader(Client.client.getInputStream()));
+            Client.out = new BufferedWriter(new OutputStreamWriter(Client.client.getOutputStream()));
 		} catch(Exception e) {
 			JOptionPane.showMessageDialog(null, "Cannot connect to " + e.getMessage());
             test = false;
@@ -30,20 +35,28 @@ public class ConnectListener implements ActionListener{
 		}
 		
 		if(test) {
-            JOptionPane.showMessageDialog(null, "Connected successfully!");
-
-            // Create input and output streams to read from and write to the server
-            Client.in = new BufferedReader(new InputStreamReader(Client.client.getInputStream()));
-            Client.out = new BufferedWriter(new OutputStreamWriter(Client.client.getOutputStream()));
+            
 		}
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		try {
-			this.Connect();
-		} catch (IOException e1) {
-			e1.printStackTrace();
+		if(connectDesign.btnConnect.getText() == "Connect") {
+			try {
+				this.Connect();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
+		else {
+			try {
+				Client.out.write("DISCONNECT");
+				Client.out.newLine();
+				Client.out.flush();
+				connectDesign.btnConnect.setText("Connect");
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 		}
 	}
 }

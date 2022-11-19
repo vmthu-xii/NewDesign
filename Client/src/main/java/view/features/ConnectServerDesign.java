@@ -37,7 +37,7 @@ public class ConnectServerDesign extends javax.swing.JPanel {
         btnConnect.setPreferredSize(new java.awt.Dimension(75, 30));
 
         txtIP.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        txtIP.setPreferredSize(new java.awt.Dimension(65, 20));
+        txtIP.setPreferredSize(new java.awt.Dimension(45, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -78,7 +78,7 @@ public class ConnectServerDesign extends javax.swing.JPanel {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnConnect;
+    public javax.swing.JButton btnConnect;
     private javax.swing.JLabel lbIP;
     public static javax.swing.JTextField txtIP;
     // End of variables declaration//GEN-END:variables
