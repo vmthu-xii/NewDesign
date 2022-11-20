@@ -15,9 +15,9 @@ public class PanelBorder extends javax.swing.JPanel {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setColor(getBackground());
         g2d.fillRoundRect(0, 0, getWidth(), getHeight(), 10, 10);
-        super.paintComponent(grphcs);
-    }
+        super.paintComponent(grphcs);    }
 
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -27,11 +27,11 @@ public class PanelBorder extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 271, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 154, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
