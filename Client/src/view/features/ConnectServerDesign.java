@@ -1,14 +1,13 @@
 package view.features;
 
+import controller.ConnectListener;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-import controller.*;
-
 public class ConnectServerDesign extends javax.swing.JPanel {
 
-	private static final long serialVersionUID = 1L;
-	public ConnectServerDesign() {
+    public ConnectServerDesign() {
         initComponents();
         setOpaque(false);
     }
@@ -16,52 +15,54 @@ public class ConnectServerDesign extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        ActionListener act = new ConnectListener(this);
 
-		ActionListener act = new ConnectListener(this);
-
-        lbIP = new javax.swing.JLabel();
-        btnConnect = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         txtIP = new javax.swing.JTextField();
+        btnConnect = new javax.swing.JButton();
 
-        setBackground(java.awt.SystemColor.controlHighlight);
-        setOpaque(false);
+        setBackground(new java.awt.Color(232, 231, 231));
+        setPreferredSize(new java.awt.Dimension(610, 45));
 
-        lbIP.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
-        lbIP.setText("Enter IP of server :");
-        
-		btnConnect.addActionListener(act);
+        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 13)); // NOI18N
+        jLabel1.setText("Enter server IP: ");
+
+        txtIP.setAutoscrolls(false);
+        txtIP.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
         btnConnect.setBackground(new java.awt.Color(15, 32, 39));
-        btnConnect.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnConnect.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnConnect.setForeground(new java.awt.Color(255, 255, 255));
         btnConnect.setText("Connect");
-        btnConnect.setBorder(null);
-        btnConnect.setPreferredSize(new java.awt.Dimension(75, 30));
-
-        txtIP.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        txtIP.setPreferredSize(new java.awt.Dimension(45, 20));
+        btnConnect.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnConnect.setPreferredSize(new java.awt.Dimension(85, 30));
+        btnConnect.addActionListener(act);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(lbIP)
-                .addGap(18, 18, 18)
-                .addComponent(txtIP, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                .addComponent(btnConnect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtIP, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(btnConnect, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtIP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnConnect, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbIP))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtIP, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnConnect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(0, 2, Short.MAX_VALUE)))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -77,10 +78,9 @@ public class ConnectServerDesign extends javax.swing.JPanel {
         super.paintComponent(grphcs);
     }
     
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnConnect;
-    private javax.swing.JLabel lbIP;
+    private javax.swing.JLabel jLabel1;
     public static javax.swing.JTextField txtIP;
     // End of variables declaration//GEN-END:variables
 }
