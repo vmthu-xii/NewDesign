@@ -1,12 +1,16 @@
 import java.awt.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+<<<<<<< HEAD
 
 import controller.ConnectListener;
 import view.components.EventMenuSelected;
 
 import view.features.*;
 
+=======
+import view.components.*;
+>>>>>>> 389d1696d1ef624517f0fbd919c9c6fdaddd0d17
 public class Main extends javax.swing.JFrame {
 
     private InfoProjectDesign info;
@@ -141,11 +145,11 @@ public class Main extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Main().setVisible(true);
-            }
-        });
+        SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				new Main().setVisible(true);
+			}
+		});
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
