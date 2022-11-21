@@ -32,7 +32,6 @@ public class ConnectListener implements ActionListener{
             JOptionPane.showMessageDialog(null, "Cannot connect to " + e.getMessage());
             test = false;
             Client.client = null;
-<<<<<<< HEAD
         }
 
         if(test) {
@@ -42,6 +41,7 @@ public class ConnectListener implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
+    	
         if(connectDesign.btnConnect.getText() == "Connect") {
             try {
                 this.Connect();
@@ -54,42 +54,11 @@ public class ConnectListener implements ActionListener{
                 Client.out.write("DISCONNECT");
                 Client.out.newLine();
                 Client.out.flush();
+                Client.client = null;
                 connectDesign.btnConnect.setText("Connect");
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
         }
     }
-=======
-		}
-		
-		if(test) {
-            
-		}
-	}
-	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(connectDesign.btnConnect.getText() == "Connect") {
-			try {
-				this.Connect();
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
-		}
-		else {
-			try {
-				Client.out.write("DISCONNECT");
-				Client.out.newLine();
-				Client.out.flush();
-				
-				Client.client.close();
-				Client.client = null;
-				connectDesign.btnConnect.setText("Connect");
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
-		}
-	}
->>>>>>> 389d1696d1ef624517f0fbd919c9c6fdaddd0d17
 }

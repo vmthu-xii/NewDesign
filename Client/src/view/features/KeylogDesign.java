@@ -1,12 +1,6 @@
 package view.features;
 
-<<<<<<< HEAD
-=======
-import java.awt.*;
->>>>>>> 389d1696d1ef624517f0fbd919c9c6fdaddd0d17
 import java.awt.event.ActionListener;
-
-import controller.KeylogListener;
 
 import controller.KeylogListener;
 
@@ -35,17 +29,9 @@ public class KeylogDesign extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtKeylog = new javax.swing.JTextArea();
 
-<<<<<<< HEAD
         jTextField1.setText("jTextField1");
 
         setBackground(new java.awt.Color(255, 255, 255));
-=======
-        
-        ActionListener act = new KeylogListener(this);
-        
-        
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
->>>>>>> 389d1696d1ef624517f0fbd919c9c6fdaddd0d17
 
         panelBorder1.setBackground(new java.awt.Color(212, 214, 245));
 
@@ -57,7 +43,6 @@ public class KeylogDesign extends javax.swing.JPanel {
         jLabel2.setText("Click SAVE...");
 
         btnUnhook.setText("UNHOOK");
-<<<<<<< HEAD
         btnUnhook.setPreferredSize(new java.awt.Dimension(70, 25));
         btnUnhook.addActionListener(act);
 
@@ -70,37 +55,17 @@ public class KeylogDesign extends javax.swing.JPanel {
         
         jLabel4.setFont(new java.awt.Font("Segoe UI Semilight", 2, 13)); // NOI18N
         jLabel4.setText("Click SHOW TEXT...");
-=======
-        btnUnhook.addActionListener(act);
-        btnUnhook.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnUnhook.setPreferredSize(new java.awt.Dimension(80, 23));
-
-        btnHook.setText("HOOK");
-        btnHook.addActionListener(act);
-        btnHook.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
->>>>>>> 389d1696d1ef624517f0fbd919c9c6fdaddd0d17
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Semilight", 2, 13)); // NOI18N
         jLabel5.setText("Click CLEAR TEXT...");
 
         btnShowText.setText("SHOW TEXT");
-<<<<<<< HEAD
         btnShowText.setPreferredSize(new java.awt.Dimension(70, 25));
         btnShowText.addActionListener(act);
 
         btnClearText.setText("CLEAR TEXT");
         btnClearText.setPreferredSize(new java.awt.Dimension(70, 25));
         btnClearText.addActionListener(act);
-=======
-        btnShowText.addActionListener(act);
-        btnShowText.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnShowText.setPreferredSize(new java.awt.Dimension(80, 23));
-
-        btnClearText.setText("CLEAR TEXT");
-        btnClearText.addActionListener(act);
-        btnClearText.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnClearText.setPreferredSize(new java.awt.Dimension(80, 23));
->>>>>>> 389d1696d1ef624517f0fbd919c9c6fdaddd0d17
 
         jScrollPane1.setBorder(null);
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);

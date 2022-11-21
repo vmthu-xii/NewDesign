@@ -1,26 +1,27 @@
 package view.components;
 
-import model.MenuModel;
-import java.awt.Component;
-import java.awt.event.*;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.*;
+import model.*;
 
-public class MenuList<E extends  Object> extends JList<E>{
-    
+public class ListMenu<E extends  Object> extends JList<E>{
+
     private final DefaultListModel model;
     private int selectedIndex = -1;
     private int overIndex = -1;
-    
+
     private EventMenuSelected event;
-    
+
     public void addEventMenuSelected(EventMenuSelected event) {
         this.event = event;     
     }
-    
-    public MenuList() {
+    public ListMenu() {
         model = new DefaultListModel();
         setModel(model);
         addMouseListener(new MouseAdapter() {
+        
             @Override
             public void mousePressed(MouseEvent e) {
                 if(SwingUtilities.isLeftMouseButton(e)) {
@@ -38,12 +39,12 @@ public class MenuList<E extends  Object> extends JList<E>{
                         selectedIndex = index;
                     }
                     repaint();
-                }
-            }    
+                }              
+            }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                overIndex = -1; // rời khỏi menu khong để lại màu
+                overIndex = - 1; // rời khỏi menu khong để lại màu
                 repaint();
             }
         });
@@ -54,8 +55,7 @@ public class MenuList<E extends  Object> extends JList<E>{
                 int index = locationToIndex(e.getPoint());
                 if(index != overIndex) {
                     Object o = model.getElementAt(index);
-                    if(o instanceof MenuModel) {
-                        MenuModel menu = (MenuModel) o;
+                    if(o instanceof MenuModel menu) {
                         if(menu.getType() == MenuModel.MenuType.MENU) {
                             overIndex = index;
                         } else {
@@ -67,7 +67,6 @@ public class MenuList<E extends  Object> extends JList<E>{
             }
         });
     }
-
     @Override
     public ListCellRenderer<? super E> getCellRenderer() {
         return new DefaultListCellRenderer(){
@@ -86,7 +85,7 @@ public class MenuList<E extends  Object> extends JList<E>{
             } 
         };
     }
-    
+
     public void addItem(MenuModel data) {
         model.addElement(data);
     }
