@@ -77,7 +77,6 @@ public class KeylogDesign extends javax.swing.JPanel {
         txtKeylog.setBackground(new java.awt.Color(255, 255, 255));
         txtKeylog.setColumns(20);
         txtKeylog.setRows(5);
-        txtKeylog.setLineWrap(true);
         jScrollPane1.setViewportView(txtKeylog);
 
         javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);

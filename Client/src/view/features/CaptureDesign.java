@@ -1,5 +1,11 @@
 package view.features;
 
+import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
+
+import controller.CaptureListener;
+
+
 public class CaptureDesign extends javax.swing.JPanel {
 
     public CaptureDesign() {
@@ -18,6 +24,8 @@ public class CaptureDesign extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         lbImage = new javax.swing.JLabel();
         btnSave = new javax.swing.JButton();
+		MouseListener mouse = new CaptureListener(this);
+        ActionListener act = new CaptureListener(this);
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -32,17 +40,21 @@ public class CaptureDesign extends javax.swing.JPanel {
 
         btnCapture.setText("CAPTURE");
         btnCapture.setPreferredSize(new java.awt.Dimension(72, 25));
-
+        btnCapture.addActionListener(act);
+        
+        
         jLabel3.setFont(new java.awt.Font("Segoe UI Semilight", 2, 13)); // NOI18N
         jLabel3.setText("Click CAPTURE ...");
 
         lbImage.setBackground(new java.awt.Color(255, 255, 255));
         lbImage.setForeground(new java.awt.Color(255, 255, 255));
         lbImage.setOpaque(true);
-
+		lbImage.addMouseListener(mouse);
+        
         btnSave.setText("SAVE");
         btnSave.setPreferredSize(new java.awt.Dimension(72, 25));
-
+        btnSave.addActionListener(act);
+        
         javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);
         panelBorder1.setLayout(panelBorder1Layout);
         panelBorder1Layout.setHorizontalGroup(
@@ -105,7 +117,7 @@ public class CaptureDesign extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel lbImage;
+    public javax.swing.JLabel lbImage;
     private view.components.PanelBorder panelBorder1;
     // End of variables declaration//GEN-END:variables
 }

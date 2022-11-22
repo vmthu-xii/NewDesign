@@ -22,36 +22,19 @@ public class PowerListener implements ActionListener {
         Client.out.newLine();
         Client.out.flush();
         Client.client.close();
-        Client.client = null;
     }
 
-    private void RestartListener() throws IOException{
+    private void RestrarListener() throws IOException{
 
         String s = "RESTART";
         Client.out.write(s);
         Client.out.newLine();
         Client.out.flush();
         Client.client.close();
-        Client.client = null;
     }
-    
-    private void SleepListener() throws IOException{
 
-        String s = "SLEEP";
-        Client.out.write(s);
-        Client.out.newLine();
-        Client.out.flush();
-        Client.client.close();
-        Client.client = null;
-    }
-    
     @Override
     public void actionPerformed(ActionEvent e) {
-    	if(Client.client == null) {
-            JOptionPane.showMessageDialog(null, "Not connected to the server");
-            return;
-        }
-    	
         String scr = e.getActionCommand();
 
         if (scr.equals("SHUTDOWN"))
@@ -59,24 +42,24 @@ public class PowerListener implements ActionListener {
             try {
                 this.ShutdownListenner();
             } catch (IOException e1) {
+                // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
         }
         else if (scr.equals("RESTART"))
         {
             try {
-                this.RestartListener();
+                this.RestrarListener();
             } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-        }
-        else if (scr.equals("SLEEP"))
-        {
-            try {
-                this.SleepListener();
-            } catch (IOException e1) {
+                // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
         }
     }
+
+
+
+
+
+
 }

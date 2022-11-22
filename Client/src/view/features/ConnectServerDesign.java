@@ -1,9 +1,9 @@
 package view.features;
 
+import controller.ConnectListener;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
-
-import controller.ConnectListener;
 
 public class ConnectServerDesign extends javax.swing.JPanel {
 
@@ -13,10 +13,10 @@ public class ConnectServerDesign extends javax.swing.JPanel {
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-    	ActionListener act = new ConnectListener(this);
-    	
+        ActionListener act = new ConnectListener(this);
+
         jLabel1 = new javax.swing.JLabel();
         txtIP = new javax.swing.JTextField();
         btnConnect = new javax.swing.JButton();
@@ -35,9 +35,9 @@ public class ConnectServerDesign extends javax.swing.JPanel {
         btnConnect.setForeground(new java.awt.Color(255, 255, 255));
         btnConnect.setText("Connect");
         btnConnect.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnConnect.setPreferredSize(new java.awt.Dimension(80, 30));
+        btnConnect.setPreferredSize(new java.awt.Dimension(85, 30));
         btnConnect.addActionListener(act);
-        
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -47,21 +47,24 @@ public class ConnectServerDesign extends javax.swing.JPanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtIP, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(btnConnect, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                .addGap(40, 40, 40)
+                .addComponent(btnConnect, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtIP, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(btnConnect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtIP, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnConnect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(0, 2, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-    }// </editor-fold>                        
+    }// </editor-fold>//GEN-END:initComponents
 
     @Override
     protected void paintComponent(Graphics grphcs) {
@@ -75,9 +78,9 @@ public class ConnectServerDesign extends javax.swing.JPanel {
         super.paintComponent(grphcs);
     }
     
-    // Variables declaration - do not modify                     
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnConnect;
     private javax.swing.JLabel jLabel1;
     public static javax.swing.JTextField txtIP;
-    // End of variables declaration                   
+    // End of variables declaration//GEN-END:variables
 }

@@ -1,9 +1,5 @@
 package view.features;
 
-import java.awt.event.ActionListener;
-
-import controller.ExitListener;
-
 public class ExitDesign extends javax.swing.JPanel {
 
     public ExitDesign() {
@@ -13,8 +9,7 @@ public class ExitDesign extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-    	ActionListener act = new ExitListener(this);
-    	
+
         panelBorder1 = new view.components.PanelBorder();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -33,8 +28,7 @@ public class ExitDesign extends javax.swing.JPanel {
 
         btnExit.setText("CONFIRM");
         btnExit.setPreferredSize(new java.awt.Dimension(72, 25));
-        btnExit.addActionListener(act);
-        
+
         javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);
         panelBorder1.setLayout(panelBorder1Layout);
         panelBorder1Layout.setHorizontalGroup(

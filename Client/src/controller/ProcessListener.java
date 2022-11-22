@@ -20,7 +20,7 @@ public class ProcessListener implements ActionListener{
     }
 
     private void List() throws IOException {
-        String s = "LIST_PROCESS";
+        String s = "LIST_APP";
         Client.out.write(s);
         Client.out.newLine();
         Client.out.flush();
@@ -43,7 +43,7 @@ public class ProcessListener implements ActionListener{
     }
 
     private void Start() throws IOException {
-        String s = "START_PROCESS";
+        String s = "START_APP";
         String name = null;
         name = processDesign.txtStartProcess.getText();
 
@@ -56,7 +56,7 @@ public class ProcessListener implements ActionListener{
             Client.out.newLine();
             Client.out.flush();
         } else {
-            JOptionPane.showMessageDialog(null, "Please enter a process name!");
+            JOptionPane.showMessageDialog(null, "Please enter an application name!");
         }
 
         try {
@@ -67,7 +67,7 @@ public class ProcessListener implements ActionListener{
     }
 
     private void Stop() throws IOException {
-        String s = "STOP_PROCESS";
+        String s = "STOP_APP";
         String ID = processDesign.txtStopProcess.getText();
 
         if(ID != null) {
@@ -79,7 +79,7 @@ public class ProcessListener implements ActionListener{
             Client.out.newLine();
             Client.out.flush();
         } else {
-            JOptionPane.showMessageDialog(null, "Please enter a process ID!");
+            JOptionPane.showMessageDialog(null, "Please enter an application ID!");
         }
 
         try {
