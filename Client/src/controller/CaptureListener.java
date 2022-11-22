@@ -83,19 +83,18 @@ public class CaptureListener implements ActionListener, MouseListener{
 				if(image != null) {
 					int type = image.getType() == 0? BufferedImage.TYPE_INT_ARGB
 	                        : image.getType();
-					BufferedImage rimg = resizeImage(image, type, 512, 512);
+					BufferedImage rimg = resizeImage(image, type, 520, 280);
 		            ImageIcon icon = new ImageIcon(rimg);
 		            this.captureDesign.lbImage.setIcon(icon);
 				}else {
-					System.out.println("Screenshot Fail");
+					JOptionPane.showMessageDialog(null, "Screenshot Fail");
 				}
 			}catch(IOException e2){
 				
 			}
 		}
 		
-		else if ("SAVE".equals(click))
-		{
+		else if ("SAVE".equals(click)) {
 			count += 1;
 			try {
 				
@@ -105,13 +104,10 @@ public class CaptureListener implements ActionListener, MouseListener{
 				e2.printStackTrace();
 			}
 				
-
 		}
 		else if (true) {
 			
 		}
-		
-		
 	}
 		
 		

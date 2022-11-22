@@ -111,7 +111,7 @@ public class InfoProjectDesign extends javax.swing.JPanel {
         jLabel13.setText("List running processes, start a process, stop a process ");
 
         jLabel14.setFont(new java.awt.Font("Segoe UI Semilight", 2, 13)); // NOI18N
-        jLabel14.setText("jLabel14");
+        jLabel14.setText("Record and report on the server's activity as it interacts with a computer");
 
         jLabel15.setFont(new java.awt.Font("Segoe UI Semilight", 2, 13)); // NOI18N
         jLabel15.setText("Take a screenshot and save it ");

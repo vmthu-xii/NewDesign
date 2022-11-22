@@ -41,6 +41,7 @@ public class ConnectListener implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
+    	
         if(connectDesign.btnConnect.getText() == "Connect") {
             try {
                 this.Connect();
@@ -53,6 +54,7 @@ public class ConnectListener implements ActionListener{
                 Client.out.write("DISCONNECT");
                 Client.out.newLine();
                 Client.out.flush();
+                Client.client = null;
                 connectDesign.btnConnect.setText("Connect");
             } catch (IOException e1) {
                 e1.printStackTrace();
