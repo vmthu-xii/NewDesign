@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 import controller.ConnectListener;
+import model.Client;
 
 public class ConnectServerDesign extends javax.swing.JPanel {
 
@@ -26,7 +27,7 @@ public class ConnectServerDesign extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 13)); // NOI18N
         jLabel1.setText("Enter server IP: ");
-
+       
         txtIP.setAutoscrolls(false);
         txtIP.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 

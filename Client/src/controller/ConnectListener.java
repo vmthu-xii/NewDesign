@@ -12,7 +12,7 @@ import view.features.*;
 public class ConnectListener implements ActionListener{
 
     private ConnectServerDesign connectDesign;
-
+    
     public ConnectListener(ConnectServerDesign connectDesign) {
         this.connectDesign = connectDesign;
     }
@@ -24,7 +24,6 @@ public class ConnectListener implements ActionListener{
         try {
             Client.client = new Socket(ConnectServerDesign.txtIP.getText(), port);
             JOptionPane.showMessageDialog(null, "Connected successfully!");
-            connectDesign.btnConnect.setText("Disconnect");
             // Create input and output streams to read from and write to the server
             Client.in = new BufferedReader(new InputStreamReader(Client.client.getInputStream()));
             Client.out = new BufferedWriter(new OutputStreamWriter(Client.client.getOutputStream()));
@@ -41,24 +40,25 @@ public class ConnectListener implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-    	
-        if(connectDesign.btnConnect.getText() == "Connect") {
-            try {
-                this.Connect();
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
+    	try {
+            this.Connect();
+            //connectDesign.btnConnect.setText("Disconnect");
+        } catch (IOException e1) {
+            e1.printStackTrace();
         }
-        else {
-            try {
-                Client.out.write("DISCONNECT");
-                Client.out.newLine();
-                Client.out.flush();
-                Client.client = null;
-                connectDesign.btnConnect.setText("Connect");
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-        }
+//        if(connectDesign.btnConnect.getText() == "Connect") {
+//            
+//        }
+//        else {
+//            try {
+//                Client.out.write("DISCONNECT");
+//                Client.out.newLine();
+//                Client.out.flush();
+//                Client.client = null;
+//                connectDesign.btnConnect.setText("Connect");
+//            } catch (IOException e1) {
+//                e1.printStackTrace();
+//            }
+//        }
     }
 }

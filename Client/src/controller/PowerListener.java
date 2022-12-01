@@ -11,38 +11,40 @@ import view.features.*;
 
 public class PowerListener implements ActionListener {
     private PowerDesign powerDesign;
+    
     public PowerListener(PowerDesign powerDesign ) {
         this.powerDesign = powerDesign;
     }
 
-
+    private void Close() throws IOException {
+    	Client.client.close();
+        Client.in.close();
+        Client.out.close();
+        Client.client = null;
+    }
+    
     private void ShutdownListenner() throws IOException{
         String s = "SHUTDOWN";
         Client.out.write(s);
         Client.out.newLine();
         Client.out.flush();
-        Client.client.close();
-        Client.client = null;
+        Close();
     }
 
     private void RestartListener() throws IOException{
-
         String s = "RESTART";
         Client.out.write(s);
         Client.out.newLine();
         Client.out.flush();
-        Client.client.close();
-        Client.client = null;
+        Close();
     }
     
     private void SleepListener() throws IOException{
-
         String s = "SLEEP";
         Client.out.write(s);
         Client.out.newLine();
         Client.out.flush();
-        Client.client.close();
-        Client.client = null;
+        Close();
     }
     
     @Override
@@ -54,7 +56,7 @@ public class PowerListener implements ActionListener {
     	
         String scr = e.getActionCommand();
 
-        if (scr.equals("SHUTDOWN"))
+        if (scr.equals("SHUT DOWN"))
         {
             try {
                 this.ShutdownListenner();

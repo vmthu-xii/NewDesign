@@ -2,6 +2,7 @@ package view.features;
 
 import java.awt.event.ActionListener;
 
+import controller.ConnectListener;
 import controller.PowerListener;
 
 public class PowerDesign extends javax.swing.JPanel {
@@ -74,7 +75,7 @@ public class PowerDesign extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 1, 13)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(56, 56, 56));
-        jLabel3.setText("Sleep ");
+        jLabel3.setText("Sleep");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Semilight", 2, 13)); // NOI18N
         jLabel4.setText("Warning: This action will disconnect your device to server ");

@@ -20,8 +20,7 @@ public class AppListener implements ActionListener{
     }
 
     private void List() throws IOException {
-        String s = "LIST_APP";
-        Client.out.write(s);
+        Client.out.write("LIST_APP");
         Client.out.newLine();
         Client.out.flush();
 
@@ -29,7 +28,7 @@ public class AppListener implements ActionListener{
         String ID = null;
         String count = null;
 
-        this.ClearListener();
+        this.Clear();
 
         while(true) {
             name = Client.in.readLine();
@@ -41,14 +40,15 @@ public class AppListener implements ActionListener{
             model.addRow(list);
         }
     }
-
+    
     private void Start() throws IOException {
-        String s = "START_APP";
         String name = null;
+        String msg = null;
+        
         name = appDesign.txtStartApp.getText();
 
         if(name != "") {
-            Client.out.write(s);
+            Client.out.write("START_APP");
             Client.out.newLine();
             Client.out.flush();
 
@@ -60,18 +60,18 @@ public class AppListener implements ActionListener{
         }
 
         try {
-            s = Client.in.readLine();
+            msg = Client.in.readLine();
         } catch (IOException e1) {
         }
-        JOptionPane.showMessageDialog(null, s);
+        JOptionPane.showMessageDialog(null, msg);
     }
 
     private void Stop() throws IOException {
-        String s = "STOP_APP";
         String ID = appDesign.txtStopApp.getText();
-
+        String msg = null;
+        
         if(ID != null) {
-            Client.out.write(s);
+            Client.out.write("STOP_APP");
             Client.out.newLine();
             Client.out.flush();
 
@@ -83,13 +83,13 @@ public class AppListener implements ActionListener{
         }
 
         try {
-            s = Client.in.readLine();
+            msg = Client.in.readLine();
         } catch (IOException e1) {
         }
-        JOptionPane.showMessageDialog(null, s);
+        JOptionPane.showMessageDialog(null, msg);
     }
 
-    private void ClearListener() {
+    private void Clear() {
         DefaultTableModel model = (DefaultTableModel) appDesign.tableApp.getModel();
         model.setRowCount(0);
     }

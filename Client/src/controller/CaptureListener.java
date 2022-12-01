@@ -1,6 +1,5 @@
 package controller;
 
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
@@ -10,7 +9,6 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalTime;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -23,8 +21,15 @@ public class CaptureListener implements ActionListener, MouseListener{
 	
 	public BufferedImage image = null;
 	public int count = 0;
+	
+	private CaptureDesign captureDesign;
+	
+	public CaptureListener(CaptureDesign captureDesign)
+	{
+		this.captureDesign = captureDesign;
+	}
+	
 	public class mouseClicked {
-
 		public mouseClicked(MouseEvent e) {
 			JFrame jf=new JFrame("Screenshot");
 			jf.setVisible(true);
@@ -34,43 +39,17 @@ public class CaptureListener implements ActionListener, MouseListener{
 		}
 
 	}
-	private CaptureDesign captureDesign;
-	
-	public CaptureListener(CaptureDesign captureDesign)
-	{
-		this.captureDesign = captureDesign;
-	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(Client.client == null) {
 			JOptionPane.showMessageDialog(null, "Not connected to the server");
-			
-			
-			
-			//
-//			BufferedImage img = null;
-//			try {
-//				img = ImageIO.read(new File("D:\\Backup\\FuckinDriver\\abc.jpg"));
-//				int type = img.getType() == 0? BufferedImage.TYPE_INT_ARGB
-//                        : img.getType();
-//				
-//				BufferedImage rimg = resizeImage(img, type, 512, 512);
-//	            ImageIcon icon = new ImageIcon(rimg);
-//	            this.captureDesign.lbImage.setIcon(icon);
-//			} catch (IOException e1) {
-//				e1.printStackTrace();
-//			}
-//			//
-			
-			
 			return;
 		}
 		
 		String click = e.getActionCommand();
 		
-		if ("CAPTURE".equals(click))
-		{
+		if ("CAPTURE".equals(click)){
 			try {
 				Client.out.write(click);
 				Client.out.newLine();
@@ -79,15 +58,18 @@ public class CaptureListener implements ActionListener, MouseListener{
 				e2.printStackTrace();
 			}			
 			try {
-				 image = ImageIO.read(Client.client.getInputStream());
+				image = ImageIO.read(Client.client.getInputStream());
 				if(image != null) {
 					int type = image.getType() == 0? BufferedImage.TYPE_INT_ARGB
 	                        : image.getType();
 					BufferedImage rimg = resizeImage(image, type, 520, 280);
 		            ImageIcon icon = new ImageIcon(rimg);
 		            this.captureDesign.lbImage.setIcon(icon);
+		            JOptionPane.showMessageDialog(null, "Screenshot successfully!");
 				}else {
-					JOptionPane.showMessageDialog(null, "Screenshot Fail");
+					//System.out.println("[capture] receive: " + image); // msg from client
+					
+					JOptionPane.showMessageDialog(null, "Screenshot fail");
 				}
 			}catch(IOException e2){
 				
@@ -95,18 +77,20 @@ public class CaptureListener implements ActionListener, MouseListener{
 		}
 		
 		else if ("SAVE".equals(click)) {
-			count += 1;
-			try {
-				
-				ImageIO.write(image , "png", new File("D:\\Screenshot\\" + count + ".png"));
-			} catch (IOException e2) {
-				System.err.println("cant save img");
-				e2.printStackTrace();
+			if(image == null) {
+				JOptionPane.showMessageDialog(null, "No pictures to save!");
+			}
+			else {
+				count += 1;
+				try {
+					ImageIO.write(image , "png", new File("D:\\Screenshot\\" + count + ".png"));
+					JOptionPane.showMessageDialog(null, "Saved successfully!\nYou can find " + count + ".png in D:\\Screenshot");
+				} catch (IOException e2) {
+					JOptionPane.showMessageDialog(null, "Create D:\\Screenshot to save the image!");
+					e2.printStackTrace();
+				}
 			}
 				
-		}
-		else if (true) {
-			
 		}
 	}
 		
